@@ -7,6 +7,9 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
 
+const { API_KEY } = process.env;
+
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,7 +43,7 @@ app.post("/", function(req, res) {
     const url = "https://us2.api.mailchimp.com/3.0/lists/f9cbe17eee";
     const options = {
         method: "POST",
-        auth: `username:${key}`
+        auth: `username:${API_KEY}`
     }
 
     const request = https.request(url, options, function(response) {
